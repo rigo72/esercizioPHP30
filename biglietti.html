@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="gestioneacquisto.php" method="get">
+        Nome<input type="text" name="nome"><br>
+        Cognome<input type="text" name="cognome"><br>
+        Codice Fiscale<input type="text" name="cf"><br>
+        Settore
+        <select name="settore">
+            <option value="curva">Curva</option>
+            <option value="tribunaOnore">Tribuna d'onore</option>
+            <option value="tribunaCentrale">Tribuna centrale</option>
+        </select><br>
+        Codice Sconto<input type="text" name="codiceSconto"><br>
+        <input type="radio" name="tipologia" value="bigliettoUnico" checked> Biglietto unico
+        <input type="radio" name="tipologia" value="piuBiglietti"> Più biglietti<br>
+        <div id="divBigliettiInPiu" style="display: none;">
+            <label>Codice fiscale aggiuntivo</label>
+            <input type="text" name="cfAggiuntivo" class="cfAggiuntivo"><br>
+
+            <label>Numero biglietti</label>
+            <input type="number" name="numBiglietti" id="numBiglietti" value="1" min="1" max="4"><br>
+
+            <button type="button" id="aggiungi">Aggiungi</button>
+            <button type="button" id="rimuovi">Rimuovi</button>
+        </div>
+        <input type="submit">
+    </form>
+    <script src="./scrpit.js"></script>
+</body>
+
+</html>
