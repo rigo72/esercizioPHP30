@@ -7,7 +7,6 @@
 </head>
 <body style="text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 30px; background-color: beige">
     <?php
-
     $nome = $_GET['nome'];
     $cognome = $_GET['cognome'];
     $cf = $_GET['cf'];
