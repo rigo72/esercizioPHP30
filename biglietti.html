@@ -1,36 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Acquisto Biglietti Partita</title>
+    <style>
+        #biglietti-aggiuntivi {
+            display: none;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <form action="gestioneacquisto.php" method="get">
-        Nome<input type="text" name="nome"><br>
-        Cognome<input type="text" name="cognome"><br>
-        Codice Fiscale<input type="text" name="cf"><br>
-        Settore
-        <select name="settore">
-            <option value="curva">Curva</option>
-            <option value="tribunaOnore">Tribuna d'onore</option>
-            <option value="tribunaCentrale">Tribuna centrale</option>
-        </select><br>
-        Codice Sconto<input type="text" name="codiceSconto"><br>
-        <input type="radio" name="tipologia" value="bigliettoUnico" checked> Biglietto unico
-        <input type="radio" name="tipologia" value="piuBiglietti"> Più biglietti<br>
-        <div id="divBigliettiInPiu" style="display: none;">
-            <label>Codice fiscale aggiuntivo</label>
-            <input type="text" name="cfAggiuntivo" class="cfAggiuntivo"><br>
-
-            <label>Numero biglietti</label>
-            <input type="number" name="numBiglietti" id="numBiglietti" value="1" min="1" max="4"><br>
-
-            <button type="button" id="aggiungi">Aggiungi</button>
-            <button type="button" id="rimuovi">Rimuovi</button>
+    <h1>Acquista Biglietti per la Partita</h1>
+    <form action="gestioneacquisto.php" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+        <label for="cognome">Cognome:</label>
+        <input type="text" id="cognome" name="cognome" required><br><br>
+        <label for="cf">Codice Fiscale:</label>
+        <input type="text" id="cf" name="cf" required><br><br>
+        <label for="settore">Settore:</label>
+        <select id="settore" name="settore" required>
+            <option value="curva">Curva - 30€</option>
+            <option value="tribuna_centrale">Tribuna Centrale - 80€</option>
+            <option value="tribuna_onore">Tribuna d'Onore - 120€</option>
+        </select><br><br>
+        <label for="codice_sconto">Codice Sconto:</label>
+        <input type="text" id="codice_sconto" name="codice_sconto"><br><br>
+        <label>Tipo di Acquisto:</label>
+        <input type="radio" id="unico" name="tipo_acquisto" value="unico" checked> Biglietto Unico
+        <input type="radio" id="multi" name="tipo_acquisto" value="multi"> Più Biglietti<br><br>
+        <div id="biglietti-aggiuntivi">
+            <label>Biglietti Aggiuntivi:</label>
+            <input type="number" id="numBiglietti" name="numBiglietti" value="1" readonly><br><br>
+            <div id="codici-aggiuntivi"></div>
+            <button type="button" onclick="aggiungiBiglietto()">+</button>
+            <button type="button" onclick="rimuoviBiglietto()">-</button>
         </div>
-        <input type="submit">
+        <br>
+        <button type="submit">Acquista Biglietti</button>
     </form>
-    <script src="./scrpit.js"></script>
+    <script src="biglietti.js"></script>
 </body>
 </html>
